@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">About</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Java Website</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1 th:text="${title}">About Us</h1>
+        <p>This is a modern Java website built with Spring Boot and Thymeleaf.</p>
+        <p>Spring Boot makes it easy to create stand-alone, production-grade applications that you can "just run".</p>
+        <h2>Technologies Used</h2>
+        <ul>
+            <li>Java 17</li>
+            <li>Spring Boot 3.2</li>
+            <li>Thymeleaf Template Engine</li>
+            <li>Maven Build Tool</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Java Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
