@@ -374,88 +374,261 @@ az ad app federated-credential create \
 
 ---
 
-## Stage 5.1: Generate Federated Credentials via Azure Portal (Step-by-Step GUI Guide)
+## Stage 5.1: Create App Registration & Federated Credentials Manually via Azure Portal (Step-by-Step)
 
-This section explains how to create federated credentials directly from the **Azure Portal** inside the App Registration's **Certificates & secrets** section.
+This is a complete manual walkthrough to connect **https://github.com/kalal-shivakumar/ram09.git** (branch: `main`) to Azure using federated credentials. **No JSON files or CLI commands needed** — everything is done through the portal UI.
 
-### Step-by-Step Instructions
+### Full Flow Overview
 
 ```mermaid
 graph TD
-    A["1. Go to Azure Portal"] --> B["2. Navigate to Entra ID"]
-    B --> C["3. Open App Registrations"]
-    C --> D["4. Select your App Registration"]
-    D --> E["5. Go to Certificates & secrets"]
-    E --> F["6. Click Federated credentials tab"]
-    F --> G["7. Click + Add credential"]
-    G --> H["8. Select GitHub Actions scenario"]
-    H --> I["9. Fill in details & Save"]
+    A["Step 1: Login to portal.azure.com"] --> B["Step 2: Create App Registration"]
+    B --> C["Step 3: Note down Application client ID"]
+    C --> D["Step 4: Go to Certificates & secrets"]
+    D --> E["Step 5: Click Federated credentials tab"]
+    E --> F["Step 6: Add credential for GitHub Actions"]
+    F --> G["Step 7: Fill in repo & branch details"]
+    G --> H["Step 8: Save the credential"]
+    H --> I["Step 9: Assign Contributor role"]
+    I --> J["Step 10: Add secrets to GitHub"]
 ```
 
-#### Step 1: Navigate to App Registrations
+---
 
-1. Go to [https://portal.azure.com](https://portal.azure.com)
-2. In the top search bar, type **"App registrations"** and select it
-3. Click on your app registration (e.g., `html-webapp-github-deploy`)
-   - If you don't have one yet, click **+ New registration**, enter a name, and click **Register**
+### Step 1: Login to Azure Portal
 
-#### Step 2: Open Certificates & secrets
+1. Open your browser and go to **https://portal.azure.com**
+2. Sign in with your Azure account (e.g., `kalalshivakumar2085@gmail.com`)
+3. You will land on the Azure Portal home page
 
-1. In the left sidebar menu of your App Registration, click **Certificates & secrets**
-2. You will see three tabs:
-   - **Certificates** — for certificate-based auth
-   - **Client secrets** — for secret-based auth (NOT recommended for GitHub Actions)
-   - **Federated credentials** — for OIDC passwordless auth ✅
+---
 
-#### Step 3: Add a Federated Credential
+### Step 2: Create a New App Registration
 
-1. Click the **Federated credentials** tab
-2. Click **+ Add credential**
+1. In the **top search bar**, type: **App registrations**
+2. Click on **"App registrations"** under Services
+3. You will see the App registrations page
+4. Click the **"+ New registration"** button at the top
 
-#### Step 4: Select the Federated Credential Scenario
+Fill in the form:
 
-A panel will open asking you to choose a scenario:
+| Field | What to enter |
+|-------|--------------|
+| **Name** | `ram09-github-deploy` |
+| **Supported account types** | Select **"Accounts in this organizational directory only (Default Directory only - Single tenant)"** |
+| **Redirect URI (optional)** | Leave this **blank** — not needed |
 
-| Scenario | Use Case |
-|----------|----------|
-| **GitHub Actions deploying Azure resources** | ✅ Select this one |
-| Kubernetes accessing Azure resources | For AKS workloads |
-| Other issuer | Custom OIDC providers |
+5. Click **"Register"**
 
-Select **"GitHub Actions deploying Azure resources"**
+---
 
-#### Step 5: Fill in the GitHub Details
+### Step 3: Note Down the Important IDs
 
-Fill in the following fields:
+After clicking Register, you land on the **Overview** page of your new App Registration. You will see:
 
-| Field | Value | Description |
-|-------|-------|-------------|
-| **Organization** | `kalal-shivakumar` | Your GitHub username or org name |
-| **Repository** | `html-webapp` | The repository name (without owner prefix) |
-| **Entity type** | `Branch` | Choose Branch, Environment, Tag, or Pull Request |
-| **GitHub branch name** | `master` | The branch that triggers deployment |
-| **Name** | `github-deploy-master` | A friendly name for this credential |
+| Field on screen | Example Value | What it is |
+|----------------|---------------|------------|
+| **Application (client) ID** | `1ba7f813-f04a-4df1-bc14-997d883f6654` | This is your `AZURE_CLIENT_ID` |
+| **Directory (tenant) ID** | `a87d418a-4991-4593-b472-b6ede0e96c60` | This is your `AZURE_TENANT_ID` |
+| **Object ID** | (a different GUID) | Internal ID — not needed for GitHub secrets |
 
-> **Entity Type Options:**
-> - **Branch** — Use when deploying from a specific branch (e.g., `master`, `main`)
-> - **Environment** — Use when deploying from a GitHub Environment (e.g., `production`)
-> - **Tag** — Use when deploying on tag creation (e.g., `v1.0.0`)
-> - **Pull Request** — Use when deploying from PRs (for preview environments)
+> 📝 **Copy the Application (client) ID and Directory (tenant) ID** — you will need them later for GitHub secrets.
 
-#### Step 6: Review and Save
+---
 
-1. Review the auto-generated values:
-   - **Issuer:** `https://token.actions.githubusercontent.com`
-   - **Subject identifier:** `repo:kalal-shivakumar/html-webapp:ref:refs/heads/master`
-   - **Audience:** `api://AzureADTokenExchange`
-2. Click **Add**
+### Step 4: Navigate to Certificates & secrets
 
-#### Step 7: Verify the Credential
+1. On the left sidebar menu of your App Registration (`ram09-github-deploy`), look for **"Manage"** section
+2. Click **"Certificates & secrets"**
+3. You will see **three tabs** at the top:
 
-After saving, you'll see your new federated credential listed under the **Federated credentials** tab with:
-- Name: `github-deploy-master`
-- Issuer: `https://token.actions.githubusercontent.com`
-- Subject: `repo:kalal-shivakumar/html-webapp:ref:refs/heads/master`
+| Tab | Purpose |
+|-----|---------|
+| **Certificates** | Upload certificate files (.cer, .pem) — NOT needed here |
+| **Client secrets** | Generate password-like secrets — ❌ NOT recommended for GitHub Actions |
+| **Federated credentials** | OIDC passwordless connection — ✅ **THIS IS WHAT WE NEED** |
+
+---
+
+### Step 5: Click on Federated credentials Tab
+
+1. Click the **"Federated credentials"** tab
+2. You will see an empty list (no credentials yet)
+3. Click the **"+ Add credential"** button
+
+---
+
+### Step 6: Select the Scenario
+
+A panel opens on the right side titled **"Add a credential"**. At the top you see **"Federated credential scenario"** dropdown.
+
+Click the dropdown and you will see these options:
+
+| Scenario Option | When to use |
+|----------------|-------------|
+| **GitHub Actions deploying Azure resources** | ✅ **Select this one** |
+| Kubernetes accessing Azure resources | For AKS/Kubernetes workloads |
+| Other issuer | For custom OIDC providers |
+
+Select: **"GitHub Actions deploying Azure resources"**
+
+---
+
+### Step 7: Fill in the GitHub Connection Details
+
+After selecting GitHub Actions, the form expands. Fill in **exactly** these values:
+
+| Field | What to type | Explanation |
+|-------|-------------|-------------|
+| **Organization** | `kalal-shivakumar` | Your GitHub username (the part before `/` in the repo URL) |
+| **Repository** | `ram09` | Just the repo name (NOT the full URL, NOT `kalal-shivakumar/ram09`) |
+| **Entity type** | Select **"Branch"** from the dropdown | Because we deploy from a specific branch |
+| **GitHub branch name** | `main` | The branch that triggers deployment — must be exactly `main` |
+| **Name** | `github-deploy-main` | A friendly name for this credential (no spaces, use hyphens) |
+| **Description** (optional) | `GitHub Actions OIDC for ram09 main branch` | Optional helpful note |
+
+> ⚠️ **CRITICAL:** The **Repository** field must be just `ram09`, NOT `kalal-shivakumar/ram09` and NOT the full URL.
+
+> ⚠️ **CRITICAL:** The **branch name** must be exactly `main` (matching your GitHub default branch). If you type `master` here but your workflow runs on `main`, authentication will **FAIL**.
+
+#### Entity Type Options Explained
+
+| Entity Type | Field that appears | Example value | Use when... |
+|-------------|-------------------|---------------|-------------|
+| **Branch** | "GitHub branch name" | `main` | Deploying from a specific branch |
+| **Environment** | "GitHub environment name" | `production` | Using GitHub Environments for gated deploys |
+| **Tag** | "GitHub tag name" | `v1.0.0` | Deploying on release tags |
+| **Pull request** | (no extra field) | — | Running on pull requests |
+
+For this setup, choose **Branch** and type **`main`**.
+
+---
+
+### Step 8: Review the Auto-Generated Values and Save
+
+Before clicking Add, the portal shows you the auto-generated values at the bottom of the form. Verify they look like this:
+
+| Auto-generated field | Expected value |
+|---------------------|----------------|
+| **Issuer** | `https://token.actions.githubusercontent.com` |
+| **Subject identifier** | `repo:kalal-shivakumar/ram09:ref:refs/heads/main` |
+| **Audience** | `api://AzureADTokenExchange` |
+
+> 📝 These values are **generated automatically** by the portal based on what you typed. You do NOT need to edit them.
+
+**If these look correct, click the "Add" button.**
+
+---
+
+### Step 9: Verify the Credential Was Created
+
+After clicking Add, you are taken back to the **Federated credentials** tab. You should now see:
+
+| Column | Value |
+|--------|-------|
+| **Name** | `github-deploy-main` |
+| **Issuer** | `https://token.actions.githubusercontent.com` |
+| **Subject identifier** | `repo:kalal-shivakumar/ram09:ref:refs/heads/main` |
+
+✅ Your federated credential is now created. **No JSON file upload was needed** — the portal handled everything.
+
+> 📝 **No file creation or upload is required for this step.** The Azure Portal builds the federated credential configuration entirely through the GUI form. JSON files are only needed if you use the Azure CLI (`az ad app federated-credential create --parameters @fedcred.json`), which we are NOT using here.
+
+---
+
+### Step 10: Assign Contributor Role to the App Registration (via Portal)
+
+The App Registration needs permission to deploy resources. You must assign it the **Contributor** role on your Resource Group.
+
+1. In the **top search bar**, type: **Resource groups**
+2. Click on **"Resource groups"** under Services
+3. Click on your resource group: **`rg-ram09`**
+4. In the left sidebar, click **"Access control (IAM)"**
+5. Click **"+ Add"** → select **"Add role assignment"**
+
+#### 5a. Role tab
+1. In the search box, type: **Contributor**
+2. Click on **"Contributor"** from the list (it says "Grants full access to manage all resources, but does not allow you to assign roles...")
+3. Click **"Next"**
+
+#### 5b. Members tab
+1. For **"Assign access to"**, select: **"User, group, or service principal"**
+2. Click **"+ Select members"**
+3. In the search box that appears on the right panel, type: **`ram09-github-deploy`**
+4. You should see your App Registration appear in the results
+5. **Click on it** to select it (it gets a checkmark)
+6. Click **"Select"**
+7. Click **"Next"**
+
+#### 5c. Review + assign tab
+1. Review the summary:
+   - **Role:** Contributor
+   - **Members:** `ram09-github-deploy`
+   - **Scope:** `/subscriptions/eea9ffc5-6c64-4dab-b152-3d2f49a73ff1/resourceGroups/rg-ram09`
+2. Click **"Review + assign"**
+
+✅ Role assignment complete. The App Registration can now deploy to your resource group.
+
+---
+
+### Step 11: Add Secrets to GitHub (via Portal)
+
+Now go to your GitHub repository and add the Azure IDs as secrets.
+
+1. Open your browser and go to: **https://github.com/kalal-shivakumar/ram09**
+2. Click **"Settings"** tab (top right, next to Insights)
+3. In the left sidebar, expand **"Secrets and variables"**
+4. Click **"Actions"**
+5. Click **"New repository secret"**
+
+Add these **three secrets** one by one:
+
+#### Secret 1:
+| Field | Value |
+|-------|-------|
+| **Name** | `AZURE_CLIENT_ID` |
+| **Secret** | `1ba7f813-f04a-4df1-bc14-997d883f6654` |
+
+Click **"Add secret"**
+
+#### Secret 2:
+| Field | Value |
+|-------|-------|
+| **Name** | `AZURE_TENANT_ID` |
+| **Secret** | `a87d418a-4991-4593-b472-b6ede0e96c60` |
+
+Click **"Add secret"**
+
+#### Secret 3:
+| Field | Value |
+|-------|-------|
+| **Name** | `AZURE_SUBSCRIPTION_ID` |
+| **Secret** | `eea9ffc5-6c64-4dab-b152-3d2f49a73ff1` |
+
+Click **"Add secret"**
+
+After adding all three, your **Actions secrets** page should show:
+
+```
+AZURE_CLIENT_ID          Updated just now
+AZURE_SUBSCRIPTION_ID    Updated just now
+AZURE_TENANT_ID          Updated just now
+```
+
+---
+
+### Summary: What You Created (No Files Needed)
+
+| What | Where | How |
+|------|-------|-----|
+| App Registration (`ram09-github-deploy`) | Azure Portal → App registrations | GUI form |
+| Federated Credential (`github-deploy-main`) | Azure Portal → App Registration → Certificates & secrets → Federated credentials | GUI form (no JSON upload) |
+| Contributor Role Assignment | Azure Portal → Resource Group → Access control (IAM) | GUI form |
+| GitHub Secrets (3 secrets) | GitHub → Settings → Secrets and variables → Actions | GUI form |
+
+> 📝 **Important:** You did NOT need to create or upload any JSON file. Everything was done through portal forms. The JSON file method (`fedcred.json`) is only needed when using the Azure CLI command `az ad app federated-credential create`.
+
+---
 
 ### Understanding the Subject Identifier Format
 
@@ -468,24 +641,31 @@ repo:<owner>/<repo>:ref:refs/tags/<tag>             # For tag-based
 repo:<owner>/<repo>:pull_request                    # For pull requests
 ```
 
+For this project:
+```
+repo:kalal-shivakumar/ram09:ref:refs/heads/main
+```
+
 ### Adding Multiple Federated Credentials
 
-You can add multiple federated credentials for different scenarios:
+You can repeat Steps 5-8 to add more credentials for different branches/scenarios:
 
 | Name | Entity Type | Value | Use Case |
 |------|-------------|-------|----------|
-| `github-deploy-master` | Branch | `master` | Production deployments |
+| `github-deploy-main` | Branch | `main` | Production deployments |
 | `github-deploy-develop` | Branch | `develop` | Staging deployments |
 | `github-deploy-production` | Environment | `production` | Environment-gated deploys |
 | `github-deploy-tags` | Tag | `v*` | Release deployments |
 
-### Important Notes
+### Common Mistakes to Avoid
 
-> ⚠️ **Do NOT create a Client Secret** if you are using Federated Credentials. Federated credentials provide passwordless authentication — no secret rotation needed.
-
-> ⚠️ **Maximum 20 federated credentials** per App Registration.
-
-> ⚠️ **Subject must match exactly** — if your workflow runs on `main` but the credential says `master`, authentication will fail.
+| Mistake | What happens | Fix |
+|---------|-------------|-----|
+| Typing `kalal-shivakumar/ram09` in the Repository field | Credential fails to match | Type only `ram09` |
+| Typing `master` in branch name when your branch is `main` | Authentication fails with 403 | Type exactly `main` |
+| Forgetting to assign Contributor role (Step 10) | Deployment fails with authorization error | Complete Step 10 |
+| Creating a Client Secret instead of Federated Credential | Unnecessary secret rotation, less secure | Use Federated credentials tab, NOT Client secrets tab |
+| Adding secrets to GitHub with wrong names | Workflow can't find the secrets | Use exact names: `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` |
 
 ### Security Benefits of Federated Credentials vs Client Secrets
 
