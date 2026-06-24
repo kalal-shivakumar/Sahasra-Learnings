@@ -360,7 +360,7 @@ az role assignment create \
 # Create the federated credential from file
 az ad app federated-credential create \
     --id <APP_OBJECT_ID> \
-    --parameters @fedcred.json \
+    --parameters "@fedcred.json" \
     --output table
 ```
 
@@ -532,7 +532,7 @@ After clicking Add, you are taken back to the **Federated credentials** tab. You
 
 ✅ Your federated credential is now created. **No JSON file upload was needed** — the portal handled everything.
 
-> 📝 **No file creation or upload is required for this step.** The Azure Portal builds the federated credential configuration entirely through the GUI form. JSON files are only needed if you use the Azure CLI (`az ad app federated-credential create --parameters @fedcred.json`), which we are NOT using here.
+> 📝 **No file creation or upload is required for this step.** The Azure Portal builds the federated credential configuration entirely through the GUI form. JSON files are only needed if you use the Azure CLI (`az ad app federated-credential create --parameters "@fedcred.json"`), which we are NOT using here.
 
 ---
 
@@ -928,7 +928,7 @@ az webapp create --name html-webapp-kalal --resource-group rg-html-webapp --plan
 az ad app create --display-name "html-webapp-github-deploy"
 az ad sp create --id <APP_ID>
 az role assignment create --assignee <APP_ID> --role Contributor --scope /subscriptions/<SUB_ID>/resourceGroups/rg-html-webapp
-az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred.json
+az ad app federated-credential create --id <APP_OBJECT_ID> --parameters "@fedcred.json"
 
 # === STAGE 6: GitHub Secrets ===
 gh secret set AZURE_CLIENT_ID --body "<value>" --repo <owner>/html-webapp
@@ -1095,7 +1095,7 @@ First, create the JSON configuration file:
 Then create the federated credential:
 
 ```powershell
-az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred.json --output table
+az ad app federated-credential create --id <APP_OBJECT_ID> --parameters "@fedcred.json" --output table
 ```
 
 > Replace `<APP_OBJECT_ID>` with the `id` (Object ID) from Step 5 — NOT the `appId`.
@@ -1103,7 +1103,7 @@ az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred
 **Example:**
 
 ```powershell
-az ad app federated-credential create --id 00000000-0000-0000-0000-000000000000 --parameters @fedcred.json --output table
+az ad app federated-credential create --id 00000000-0000-0000-0000-000000000000 --parameters "@fedcred.json" --output table
 ```
 
 **What it creates:** An OIDC trust between this App Registration and the GitHub repo `kalal-shivakumar/ram09` (branch `main`).
@@ -1282,7 +1282,7 @@ az role assignment create --assignee <APP_ID> --role Contributor --scope /subscr
     "audiences": ["api://AzureADTokenExchange"]
 }
 '@ | Out-File -FilePath fedcred.json -Encoding UTF8
-az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred.json --output table
+az ad app federated-credential create --id <APP_OBJECT_ID> --parameters "@fedcred.json" --output table
 Remove-Item fedcred.json
 
 # 9. Git Init & Commit
