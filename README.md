@@ -948,6 +948,406 @@ gh run watch --repo <owner>/html-webapp --exit-status
 
 ---
 
+## Automated Way
+
+This section provides **individual CLI commands** for every resource created in this project. Each command is self-contained — run them one by one in PowerShell.
+
+> **Prerequisites:** Azure CLI (`az`) and GitHub CLI (`gh`) must be installed and authenticated.
+
+---
+
+### 1. Azure Login
+
+```powershell
+# Login to Azure (opens browser for authentication)
+az login
+```
+
+```powershell
+# Verify you are logged in and check your subscription
+az account show --output table
+```
+
+**Expected output:**
+
+| Name | SubscriptionId | TenantId | State |
+|------|---------------|----------|-------|
+| Azure subscription 1 | eea9ffc5-6c64-4dab-b152-3d2f49a73ff1 | a87d418a-4991-4593-b472-b6ede0e96c60 | Enabled |
+
+---
+
+### 2. Create Resource Group
+
+```powershell
+az group create --name rg-ram09 --location centralus --output table
+```
+
+**What it creates:** A logical container in Azure to hold the App Service Plan and Web App.
+
+| Parameter | Value |
+|-----------|-------|
+| Name | `rg-ram09` |
+| Location | `centralus` |
+
+---
+
+### 3. Create App Service Plan
+
+```powershell
+az appservice plan create --name plan-ram09 --resource-group rg-ram09 --sku F1 --is-linux --location centralus --output table
+```
+
+**What it creates:** The compute infrastructure (server) that hosts the web app.
+
+| Parameter | Value |
+|-----------|-------|
+| Name | `plan-ram09` |
+| SKU | `F1` (Free tier) |
+| OS | Linux |
+| Location | `centralus` |
+
+---
+
+### 4. Create Web App
+
+```powershell
+az webapp create --name ram09-java-app --resource-group rg-ram09 --plan plan-ram09 --runtime "JAVA:17-java17" --output table
+```
+
+**What it creates:** The web application endpoint that serves your Java website.
+
+| Parameter | Value |
+|-----------|-------|
+| Name | `ram09-java-app` |
+| Runtime | Java 17 |
+| URL | `https://ram09-java-app.azurewebsites.net` |
+
+---
+
+### 5. Create App Registration
+
+```powershell
+az ad app create --display-name "ram09-github-deploy" --output json --query "{appId: appId, id: id}"
+```
+
+**What it creates:** An identity in Microsoft Entra ID that GitHub Actions will use to authenticate.
+
+**Save these values from the output:**
+
+| Output Field | What it is | Used as |
+|-------------|------------|---------|
+| `appId` | Application (client) ID | `CLIENTID` GitHub secret |
+| `id` | Object ID | Needed for federated credential creation |
+
+---
+
+### 6. Create Service Principal
+
+```powershell
+az ad sp create --id <APP_ID> --output json --query "{id: id, appId: appId}"
+```
+
+> Replace `<APP_ID>` with the `appId` from Step 5.
+
+**Example:**
+
+```powershell
+az ad sp create --id 1ba7f813-f04a-4df1-bc14-997d883f6654 --output json --query "{id: id, appId: appId}"
+```
+
+**What it creates:** A service principal (the "executable identity") linked to the App Registration.
+
+---
+
+### 7. Assign Contributor Role
+
+```powershell
+az role assignment create --assignee <APP_ID> --role Contributor --scope /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/rg-ram09 --output table
+```
+
+> Replace `<APP_ID>` and `<SUBSCRIPTION_ID>` with your values.
+
+**Example:**
+
+```powershell
+az role assignment create --assignee 1ba7f813-f04a-4df1-bc14-997d883f6654 --role Contributor --scope /subscriptions/eea9ffc5-6c64-4dab-b152-3d2f49a73ff1/resourceGroups/rg-ram09 --output table
+```
+
+**What it does:** Grants the service principal permission to deploy resources inside the `rg-ram09` resource group.
+
+---
+
+### 8. Create Federated Credential
+
+First, create the JSON configuration file:
+
+```powershell
+@'
+{
+    "name": "github-deploy-main",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "subject": "repo:kalal-shivakumar/ram09:ref:refs/heads/main",
+    "audiences": ["api://AzureADTokenExchange"]
+}
+'@ | Out-File -FilePath fedcred.json -Encoding UTF8
+```
+
+Then create the federated credential:
+
+```powershell
+az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred.json --output table
+```
+
+> Replace `<APP_OBJECT_ID>` with the `id` (Object ID) from Step 5 — NOT the `appId`.
+
+**Example:**
+
+```powershell
+az ad app federated-credential create --id 00000000-0000-0000-0000-000000000000 --parameters @fedcred.json --output table
+```
+
+**What it creates:** An OIDC trust between this App Registration and the GitHub repo `kalal-shivakumar/ram09` (branch `main`).
+
+| Parameter in JSON | Value | Purpose |
+|-------------------|-------|---------|
+| `name` | `github-deploy-main` | Friendly name |
+| `issuer` | `https://token.actions.githubusercontent.com` | GitHub's OIDC provider URL |
+| `subject` | `repo:kalal-shivakumar/ram09:ref:refs/heads/main` | Limits access to this specific repo and branch |
+| `audiences` | `api://AzureADTokenExchange` | Azure's expected audience value |
+
+Clean up the temporary file:
+
+```powershell
+Remove-Item fedcred.json
+```
+
+---
+
+### 9. Initialize Git Repository
+
+```powershell
+git init
+```
+
+```powershell
+git add .
+```
+
+```powershell
+git commit -m "Initial commit: Java Spring Boot website"
+```
+
+---
+
+### 10. Create GitHub Repository and Push
+
+```powershell
+git remote add origin https://github.com/kalal-shivakumar/ram09.git
+```
+
+```powershell
+git branch -M main
+```
+
+```powershell
+git push -u origin main
+```
+
+---
+
+### 11. Set GitHub Secret — CLIENTID
+
+```powershell
+gh secret set CLIENTID --body "<APP_CLIENT_ID>" --repo kalal-shivakumar/ram09
+```
+
+**Example:**
+
+```powershell
+gh secret set CLIENTID --body "1ba7f813-f04a-4df1-bc14-997d883f6654" --repo kalal-shivakumar/ram09
+```
+
+---
+
+### 12. Set GitHub Secret — TENANTID
+
+```powershell
+gh secret set TENANTID --body "<TENANT_ID>" --repo kalal-shivakumar/ram09
+```
+
+**Example:**
+
+```powershell
+gh secret set TENANTID --body "a87d418a-4991-4593-b472-b6ede0e96c60" --repo kalal-shivakumar/ram09
+```
+
+---
+
+### 13. Set GitHub Secret — SUBSCRIPTIONID
+
+```powershell
+gh secret set SUBSCRIPTIONID --body "<SUBSCRIPTION_ID>" --repo kalal-shivakumar/ram09
+```
+
+**Example:**
+
+```powershell
+gh secret set SUBSCRIPTIONID --body "eea9ffc5-6c64-4dab-b152-3d2f49a73ff1" --repo kalal-shivakumar/ram09
+```
+
+---
+
+### 14. Verify GitHub Secrets
+
+```powershell
+gh secret list --repo kalal-shivakumar/ram09
+```
+
+**Expected output:**
+
+```
+CLIENTID          Updated 2026-06-24
+SUBSCRIPTIONID    Updated 2026-06-24
+TENANTID          Updated 2026-06-24
+```
+
+---
+
+### 15. Trigger the Workflow Manually
+
+```powershell
+gh workflow run deploy.yml --repo kalal-shivakumar/ram09 --ref main
+```
+
+---
+
+### 16. Monitor the Workflow Run
+
+```powershell
+gh run list --repo kalal-shivakumar/ram09 --limit 5
+```
+
+```powershell
+gh run watch --repo kalal-shivakumar/ram09 --exit-status
+```
+
+---
+
+### 17. Verify the Deployment
+
+```powershell
+az webapp show --name ram09-java-app --resource-group rg-ram09 --query "{state: state, url: defaultHostName}" --output table
+```
+
+**Expected output:**
+
+| State | Url |
+|-------|-----|
+| Running | `ram09-java-app.azurewebsites.net` |
+
+Open in browser: **https://ram09-java-app.azurewebsites.net**
+
+---
+
+### Automated Way — Quick Reference (All Commands)
+
+```powershell
+# 1. Login
+az login
+
+# 2. Resource Group
+az group create --name rg-ram09 --location centralus --output table
+
+# 3. App Service Plan
+az appservice plan create --name plan-ram09 --resource-group rg-ram09 --sku F1 --is-linux --location centralus --output table
+
+# 4. Web App
+az webapp create --name ram09-java-app --resource-group rg-ram09 --plan plan-ram09 --runtime "JAVA:17-java17" --output table
+
+# 5. App Registration
+az ad app create --display-name "ram09-github-deploy" --output json --query "{appId: appId, id: id}"
+
+# 6. Service Principal (replace <APP_ID>)
+az ad sp create --id <APP_ID> --output json
+
+# 7. Role Assignment (replace <APP_ID> and <SUBSCRIPTION_ID>)
+az role assignment create --assignee <APP_ID> --role Contributor --scope /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/rg-ram09 --output table
+
+# 8. Federated Credential (replace <APP_OBJECT_ID>)
+@'
+{
+    "name": "github-deploy-main",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "subject": "repo:kalal-shivakumar/ram09:ref:refs/heads/main",
+    "audiences": ["api://AzureADTokenExchange"]
+}
+'@ | Out-File -FilePath fedcred.json -Encoding UTF8
+az ad app federated-credential create --id <APP_OBJECT_ID> --parameters @fedcred.json --output table
+Remove-Item fedcred.json
+
+# 9. Git Init & Commit
+git init
+git add .
+git commit -m "Initial commit: Java Spring Boot website"
+
+# 10. Push to GitHub
+git remote add origin https://github.com/kalal-shivakumar/ram09.git
+git branch -M main
+git push -u origin main
+
+# 11-13. GitHub Secrets (replace values)
+gh secret set CLIENTID --body "<APP_CLIENT_ID>" --repo kalal-shivakumar/ram09
+gh secret set TENANTID --body "<TENANT_ID>" --repo kalal-shivakumar/ram09
+gh secret set SUBSCRIPTIONID --body "<SUBSCRIPTION_ID>" --repo kalal-shivakumar/ram09
+
+# 14. Verify Secrets
+gh secret list --repo kalal-shivakumar/ram09
+
+# 15. Trigger Workflow
+gh workflow run deploy.yml --repo kalal-shivakumar/ram09 --ref main
+
+# 16. Monitor
+gh run watch --repo kalal-shivakumar/ram09 --exit-status
+
+# 17. Verify
+az webapp show --name ram09-java-app --resource-group rg-ram09 --query "{state: state, url: defaultHostName}" --output table
+```
+
+---
+
+### Cleanup — Delete All Resources
+
+Delete each resource individually:
+
+```powershell
+# Delete the Web App
+az webapp delete --name ram09-java-app --resource-group rg-ram09
+```
+
+```powershell
+# Delete the App Service Plan
+az appservice plan delete --name plan-ram09 --resource-group rg-ram09 --yes
+```
+
+```powershell
+# Delete the Resource Group (deletes everything inside it)
+az group delete --name rg-ram09 --yes --no-wait
+```
+
+```powershell
+# Delete the App Registration
+az ad app delete --id <APP_ID>
+```
+
+```powershell
+# Delete GitHub Secrets
+gh secret delete CLIENTID --repo kalal-shivakumar/ram09
+gh secret delete TENANTID --repo kalal-shivakumar/ram09
+gh secret delete SUBSCRIPTIONID --repo kalal-shivakumar/ram09
+```
+
+---
+
 ## Cleanup
 
 To remove all resources when no longer needed:
