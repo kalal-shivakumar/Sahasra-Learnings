@@ -3,381 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahasra Learnings - Welcome</title>
+    <title>Hello World - Sahasra Learnings</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
+            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #667eea;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.8s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
+            height: 100vh;
+            margin: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .info-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .info-section.active {
-            display: block;
-        }
-
-        .info-section h2 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .info-section p {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .nav-btn {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
-            margin-right: 0.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .nav-btn.active {
-            background: #764ba2;
-        }
-
-        .nav-btn:hover {
-            background: #764ba2;
-        }
-
-        footer {
-            background: rgba(255, 255, 255, 0.9);
+        .container {
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            background: white;
+            padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        footer p {
+        h1 {
+            color: #667eea;
+            margin: 0;
+        }
+        p {
             color: #666;
-        }
-
-        .deployment-badge {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            .nav-btn {
-                display: block;
-                width: 100%;
-                margin: 0.5rem 0;
-            }
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">🚀 Sahasra</a>
-            <ul>
-                <li><a href="#" onclick="showSection('home', event)">Home</a></li>
-                <li><a href="#" onclick="showSection('about', event)">About</a></li>
-                <li><a href="#" onclick="showSection('services', event)">Services</a></li>
-                <li><a href="#" onclick="showSection('contact', event)">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div class="container">
-        <!-- Home Section -->
-        <div id="home" class="info-section active">
-            <div class="hero">
-                <h1>Welcome to Sahasra Learnings</h1>
-                <p>A modern platform for learning and growth, deployed on Azure Cloud with GitHub Actions</p>
-                <button class="btn" onclick="showSection('about', event)">Learn More</button>
-                <div class="deployment-badge">✓ Deployed on Azure App Service</div>
-            </div>
-
-            <div class="features">
-                <div class="feature-card">
-                    <h3>☁️ Cloud Hosted</h3>
-                    <p>Deployed on Microsoft Azure App Service for high availability and scalability</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🚀 Automated CI/CD</h3>
-                    <p>GitHub Actions workflow automatically builds and deploys on every push</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔒 Secure</h3>
-                    <p>Uses federated credentials (OIDC) for secure, passwordless authentication</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- About Section -->
-        <div id="about" class="info-section">
-            <h2>About Sahasra Learnings</h2>
-            <p>Sahasra Learnings is a modern web application built with simplicity and scalability in mind. It demonstrates best practices in cloud deployment, CI/CD automation, and modern web development.</p>
-            
-            <h3 style="color: #667eea; margin-top: 2rem; margin-bottom: 1rem;">Technology Stack</h3>
-            <p><strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript</p>
-            <p><strong>Hosting:</strong> Microsoft Azure App Service (Linux)</p>
-            <p><strong>CI/CD:</strong> GitHub Actions with OIDC Federation</p>
-            <p><strong>Version Control:</strong> Git & GitHub</p>
-            
-            <h3 style="color: #667eea; margin-top: 2rem; margin-bottom: 1rem;">Project Goals</h3>
-            <ul style="margin-left: 2rem; color: #666;">
-                <li>Demonstrate cloud-native deployment practices</li>
-                <li>Show modern authentication methods (Federated Credentials)</li>
-                <li>Provide a clean, responsive user interface</li>
-                <li>Implement Infrastructure as Code principles</li>
-            </ul>
-        </div>
-
-        <!-- Services Section -->
-        <div id="services" class="info-section">
-            <h2>Our Features</h2>
-            
-            <h3 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 1rem;">🎯 Automated Deployment</h3>
-            <p>Every push to the main branch automatically triggers a build and deployment pipeline using GitHub Actions, ensuring continuous delivery of updates.</p>
-
-            <h3 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 1rem;">🔐 Security First</h3>
-            <p>Uses OpenID Connect (OIDC) federated credentials instead of secrets, providing enhanced security and compliance with modern standards.</p>
-
-            <h3 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 1rem;">📱 Responsive Design</h3>
-            <p>Built with mobile-first approach, ensuring the application works seamlessly across all devices and screen sizes.</p>
-
-            <h3 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 1rem;">⚡ High Performance</h3>
-            <p>Optimized static content delivery on Azure CDN provides fast loading times and excellent performance metrics.</p>
-        </div>
-
-        <!-- Contact Section -->
-        <div id="contact" class="info-section">
-            <h2>Get in Touch</h2>
-            <p>Have questions or want to learn more about Sahasra Learnings? We'd love to hear from you!</p>
-            
-            <div style="margin-top: 2rem; padding: 2rem; background: #f5f5f5; border-radius: 8px;">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">Contact Information</h3>
-                <p><strong>Email:</strong> info@sahasralearnings.com</p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/kalal-shivakumar/Sahasra-Learnings" style="color: #667eea; text-decoration: none;">github.com/kalal-shivakumar/Sahasra-Learnings</a></p>
-                <p><strong>Website:</strong> https://kalal-java-app.azurewebsites.net</p>
-                
-                <h3 style="color: #667eea; margin-top: 2rem; margin-bottom: 1rem;">Quick Support</h3>
-                <p>For deployment issues or technical questions, please check our README.md file which contains comprehensive documentation.</p>
-            </div>
-
-            <button class="btn" style="margin-top: 2rem;" onclick="showSection('home', event)">← Back to Home</button>
-        </div>
+        <h1>Hello World! 🚀</h1>
+        <p>Welcome to Sahasra Learnings</p>
+        <p>Deployed on Azure App Service</p>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Sahasra Learnings. All rights reserved.</p>
-        <p>Deployed on Azure App Service | Powered by GitHub Actions</p>
-    </footer>
-
-    <script>
-        function showSection(sectionId, event) {
-            if (event) {
-                event.preventDefault();
-            }
-
-            // Hide all sections
-            const sections = document.querySelectorAll('.info-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Show selected section
-            const selectedSection = document.getElementById(sectionId);
-            if (selectedSection) {
-                selectedSection.classList.add('active');
-            }
-
-            // Update active nav button
-            const navBtns = document.querySelectorAll('.nav-btn');
-            navBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        // Smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Log page load
-        console.log('Sahasra Learnings loaded successfully!');
-        console.log('Deployed on Azure App Service');
-    </script>
 </body>
 </html>
