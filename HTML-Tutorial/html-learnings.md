@@ -1,795 +1,500 @@
-# HTML Learnings - 30 Basic Single-Page Labs
+# HTML Learnings (Beginner Progressive) - Corporate User Onboarding Single Page
 
-Goal: Learn HTML by building a single-page onboarding website.
-Rule: Every lab is independent and can be run as a standalone HTML file.
-Constraint: Use only HTML. No CSS. No JavaScript.
+Audience: Absolute beginner in HTML.
+Method: Build one single page step by step.
+Rule: In every lab, add only 2 or 3 extra lines.
+Final Product: A corporate company user onboarding single-page form.
 
-## Lab 1: What Is a Single-Page Onboarding Screen
-What this lab teaches:
-- Understand what onboarding means on one page.
-- Identify common sections: intro, form, confirmation.
-- Build a simple semantic page flow.
+## Base File (Use This in Lab 1)
+Save this as onboarding.html
 
-Example:
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lab 1 - Single Page Onboarding</title>
+  <title>Corporate Onboarding</title>
 </head>
 <body>
-  <header>
-    <h1>Welcome to QuickStart Onboarding</h1>
-  </header>
-  <main>
-    <section>
-      <h2>What You Will Do</h2>
-      <p>Share your details and complete setup in one page.</p>
-    </section>
-  </main>
 </body>
 </html>
 ```
 
-## Lab 2: Basic HTML Page Setup
-What this lab teaches:
-- Create a valid HTML document.
-- Use head and body correctly.
-- Keep a clean structure for future sections.
+## Lab 1: Add Main Heading
+What you learn:
+- Add visible content inside body.
+- Use h1 heading.
+- Understand page title vs visible heading.
 
-Example:
+Add these 2 lines:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 2 - HTML Setup</title>
-</head>
-<body>
-  <h1>Onboarding Page</h1>
-  <p>This page has a valid HTML foundation.</p>
-</body>
-</html>
+<h1>Acme Corp Employee Onboarding</h1>
+<p>Welcome to your onboarding portal.</p>
 ```
 
-## Lab 3: Page Title and Meta Tags
-What this lab teaches:
-- Add a useful browser tab title.
-- Set character encoding and viewport.
-- Prepare metadata for readability and SEO basics.
+## Lab 2: Add Intro Paragraphs
+What you learn:
+- Use paragraphs for clear instructions.
+- Improve readability.
+- Explain purpose to users.
 
-Example:
+Add these 2 lines:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Single-page user onboarding form.">
-  <title>Lab 3 - Metadata</title>
-</head>
-<body>
-  <h1>Metadata Ready Page</h1>
-</body>
-</html>
+<p>Please complete this form to create your company profile.</p>
+<p>All mandatory fields must be filled.</p>
 ```
 
-## Lab 4: Headings and Simple Text Content
-What this lab teaches:
-- Use headings in the right order.
-- Group text into meaningful paragraphs.
-- Improve page scanability.
+## Lab 3: Add Navigation Marker
+What you learn:
+- Create a simple in-page anchor target.
+- Prepare one-page navigation.
+- Understand id usage.
 
-Example:
+Add these 2 lines:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 4 - Headings and Text</title>
-</head>
-<body>
-  <h1>User Onboarding</h1>
-  <h2>Step Overview</h2>
-  <p>Complete your profile and preferences to get started.</p>
-</body>
-</html>
+<a href="#onboarding-form">Jump to Form</a>
+<hr>
 ```
 
-## Lab 5: Intro Section for New Users
-What this lab teaches:
-- Build a clear welcome section.
-- Explain onboarding purpose quickly.
-- Guide users to start action.
+## Lab 4: Add Form Container
+What you learn:
+- Start an HTML form.
+- Set action and method.
+- Give form an id for linking.
 
-Example:
+Add these 2 lines:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 5 - Intro Section</title>
-</head>
-<body>
-  <section>
-    <h1>Welcome, New User</h1>
-    <p>We need a few details to set up your account.</p>
-    <p>Start by filling the form below.</p>
-  </section>
-</body>
-</html>
+<form id="onboarding-form" action="/submit" method="post">
+</form>
 ```
 
-## Lab 6: Using Paragraphs for Instructions
-What this lab teaches:
-- Write readable form instructions.
-- Break content into short paragraphs.
-- Reduce confusion before user input.
+## Lab 5: Add Section Heading Inside Form
+What you learn:
+- Organize form into sections.
+- Add context for users.
+- Keep structure beginner-friendly.
 
-Example:
+Add these 2 lines inside form:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 6 - Instruction Paragraphs</title>
-</head>
-<body>
-  <h1>Instructions</h1>
-  <p>Use your real email so we can send updates.</p>
-  <p>Fields marked required must be filled.</p>
-  <p>Review details before submitting.</p>
-</body>
-</html>
+<h2>Section 1: Basic Information</h2>
+<p>Enter your personal details.</p>
 ```
 
-## Lab 7: Creating Step-by-Step Lists
-What this lab teaches:
-- Use ordered lists for onboarding steps.
-- Make process flow clear.
-- Add checklist-like clarity.
+## Lab 6: Add Full Name Field
+What you learn:
+- Use label and input pairing.
+- Capture user name.
+- Build first input safely.
 
-Example:
+Add these 2 lines inside form:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 7 - Step List</title>
-</head>
-<body>
-  <h1>Onboarding Steps</h1>
-  <ol>
-    <li>Enter account details</li>
-    <li>Select preferences</li>
-    <li>Submit and confirm</li>
-  </ol>
-</body>
-</html>
+<label for="fullName">Full Name</label>
+<input type="text" id="fullName" name="fullName">
 ```
 
-## Lab 8: Adding Simple Navigation Links
-What this lab teaches:
-- Add section links on one page.
-- Use fragment IDs for quick jumps.
-- Improve movement across long forms.
+## Lab 7: Add Work Email Field
+What you learn:
+- Use email input type.
+- Capture official contact.
+- Understand semantic input types.
 
-Example:
+Add these 2 lines inside form:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 8 - Navigation Links</title>
-</head>
-<body>
-  <nav>
-    <a href="#account">Account</a> |
-    <a href="#preferences">Preferences</a> |
-    <a href="#submit">Submit</a>
-  </nav>
-
-  <h2 id="account">Account</h2>
-  <p>Account details section.</p>
-
-  <h2 id="preferences">Preferences</h2>
-  <p>Preferences section.</p>
-
-  <h2 id="submit">Submit</h2>
-  <p>Final submission section.</p>
-</body>
-</html>
+<label for="workEmail">Work Email</label>
+<input type="email" id="workEmail" name="workEmail">
 ```
 
-## Lab 9: Adding Images with Alt Text
-What this lab teaches:
-- Insert images in onboarding pages.
-- Write meaningful alt text.
-- Keep decorative and informative images distinct.
+## Lab 8: Add Employee ID Field
+What you learn:
+- Add text input for corporate ID.
+- Keep consistent labels.
+- Extend form progressively.
 
-Example:
+Add these 2 lines inside form:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 9 - Images and Alt Text</title>
-</head>
-<body>
-  <h1>Profile Setup</h1>
-  <img src="profile-placeholder.png" alt="Placeholder avatar for new user profile">
-</body>
-</html>
+<label for="employeeId">Employee ID</label>
+<input type="text" id="employeeId" name="employeeId">
 ```
 
-## Lab 10: Form Tag Basics
-What this lab teaches:
-- Create a basic form element.
-- Set method and action attributes.
-- Prepare form for user onboarding input.
+## Lab 9: Add Department Dropdown
+What you learn:
+- Use select and option.
+- Limit input to valid departments.
+- Improve data consistency.
 
-Example:
+Add these 3 lines inside form:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 10 - Form Basics</title>
-</head>
-<body>
-  <form action="/submit-onboarding" method="post">
-    <p>Simple onboarding form container.</p>
-  </form>
-</body>
-</html>
+<label for="department">Department</label>
+<select id="department" name="department"><option value="engineering">Engineering</option><option value="hr">HR</option><option value="finance">Finance</option></select>
+<br>
 ```
 
-## Lab 11: Name Input Field
-What this lab teaches:
-- Add a text input for full name.
-- Use label and id pairing.
-- Capture identity basics.
+## Lab 10: Add Job Title Field
+What you learn:
+- Capture role information.
+- Expand professional profile.
+- Use plain text input correctly.
 
-Example:
+Add these 2 lines inside form:
+```html
+<label for="jobTitle">Job Title</label>
+<input type="text" id="jobTitle" name="jobTitle">
+```
+
+## Lab 11: Add Phone Number
+What you learn:
+- Use tel input type.
+- Capture mobile contact.
+- Prepare for HR communication.
+
+Add these 2 lines inside form:
+```html
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone">
+```
+
+## Lab 12: Add Date of Joining
+What you learn:
+- Use date input.
+- Capture joining timeline.
+- Keep date format structured.
+
+Add these 2 lines inside form:
+```html
+<label for="joiningDate">Date of Joining</label>
+<input type="date" id="joiningDate" name="joiningDate">
+```
+
+## Lab 13: Add Office Location
+What you learn:
+- Capture workplace location.
+- Add another text field.
+- Build realistic corporate data model.
+
+Add these 2 lines inside form:
+```html
+<label for="officeLocation">Office Location</label>
+<input type="text" id="officeLocation" name="officeLocation">
+```
+
+## Lab 14: Add Work Mode Radio Options
+What you learn:
+- Use radio buttons for one choice.
+- Group choices with same name.
+- Capture remote/hybrid/onsite preference.
+
+Add these 3 lines inside form:
+```html
+<p>Work Mode</p>
+<label><input type="radio" name="workMode" value="onsite"> Onsite</label>
+<label><input type="radio" name="workMode" value="hybrid"> Hybrid</label>
+```
+
+## Lab 15: Add One More Work Mode Option
+What you learn:
+- Extend radio group correctly.
+- Keep values structured.
+- Improve form completeness.
+
+Add this 1 line plus 1 helper line inside form:
+```html
+<label><input type="radio" name="workMode" value="remote"> Remote</label>
+<br>
+```
+
+## Lab 16: Add Skills Checkboxes
+What you learn:
+- Use checkboxes for multiple choices.
+- Capture training preferences.
+- Model onboarding skills profile.
+
+Add these 3 lines inside form:
+```html
+<p>Primary Skills</p>
+<label><input type="checkbox" name="skills" value="communication"> Communication</label>
+<label><input type="checkbox" name="skills" value="technical"> Technical</label>
+```
+
+## Lab 17: Add Another Skill Option
+What you learn:
+- Extend checkbox groups.
+- Keep naming consistent.
+- Improve user personalization.
+
+Add these 2 lines inside form:
+```html
+<label><input type="checkbox" name="skills" value="leadership"> Leadership</label>
+<br>
+```
+
+## Lab 18: Add Manager Name Field
+What you learn:
+- Capture reporting information.
+- Add another text input.
+- Prepare internal org mapping.
+
+Add these 2 lines inside form:
+```html
+<label for="managerName">Reporting Manager</label>
+<input type="text" id="managerName" name="managerName">
+```
+
+## Lab 19: Add Emergency Contact Name
+What you learn:
+- Capture emergency details.
+- Create related contact sections.
+- Improve practical onboarding scope.
+
+Add these 2 lines inside form:
+```html
+<label for="emergencyName">Emergency Contact Name</label>
+<input type="text" id="emergencyName" name="emergencyName">
+```
+
+## Lab 20: Add Emergency Contact Phone
+What you learn:
+- Add second emergency field.
+- Keep details paired.
+- Improve profile completeness.
+
+Add these 2 lines inside form:
+```html
+<label for="emergencyPhone">Emergency Contact Phone</label>
+<input type="tel" id="emergencyPhone" name="emergencyPhone">
+```
+
+## Lab 21: Add Address Textarea
+What you learn:
+- Use textarea for long text.
+- Capture residential address.
+- Handle multi-line input.
+
+Add these 2 lines inside form:
+```html
+<label for="address">Residential Address</label>
+<textarea id="address" name="address" rows="3" cols="40"></textarea>
+```
+
+## Lab 22: Add ID Proof Upload
+What you learn:
+- Use file input.
+- Capture onboarding documents.
+- Understand upload field basics.
+
+Add these 2 lines inside form:
+```html
+<label for="idProof">Upload ID Proof</label>
+<input type="file" id="idProof" name="idProof">
+```
+
+## Lab 23: Add Profile Photo Upload
+What you learn:
+- Add a second upload field.
+- Accept image files.
+- Prepare employee profile creation.
+
+Add these 2 lines inside form:
+```html
+<label for="profilePhoto">Upload Profile Photo</label>
+<input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+```
+
+## Lab 24: Add Terms Acceptance
+What you learn:
+- Add legal consent checkbox.
+- Mark a field required.
+- Build compliant onboarding flow.
+
+Add these 2 lines inside form:
+```html
+<label><input type="checkbox" name="terms" required> I agree to company policies.</label>
+<br>
+```
+
+## Lab 25: Add Corporate Policy Links
+What you learn:
+- Add useful legal references.
+- Improve user trust.
+- Keep users informed before submit.
+
+Add these 2 lines inside form:
+```html
+<a href="/terms">Terms of Use</a>
+<a href="/privacy">Privacy Policy</a>
+```
+
+## Lab 26: Add Submit and Reset Buttons
+What you learn:
+- Submit data to server.
+- Reset the form quickly.
+- Complete basic interaction controls.
+
+Add these 2 lines inside form:
+```html
+<button type="submit">Submit Onboarding</button>
+<button type="reset">Reset Form</button>
+```
+
+## Lab 27: Add Help Section After Form
+What you learn:
+- Provide support information.
+- Add static contact content.
+- Improve onboarding confidence.
+
+Add these 3 lines after form:
+```html
+<h2>Need Help?</h2>
+<p>Email: hr@acmecorp.com</p>
+<p>Phone: +1-555-0100</p>
+```
+
+## Lab 28: Add Confirmation Message Block
+What you learn:
+- Show expected post-submit message.
+- Guide user next steps.
+- Improve completion clarity.
+
+Add these 3 lines after help section:
+```html
+<h2>After Submission</h2>
+<p>You will receive a confirmation email within 24 hours.</p>
+<p>Keep your Employee ID handy for verification.</p>
+```
+
+## Lab 29: Add Simple Checklist
+What you learn:
+- Summarize required onboarding items.
+- Use unordered list for guidance.
+- Reduce missing information errors.
+
+Add these 3 lines before form submit buttons:
+```html
+<ul>
+  <li>Fill all required fields</li><li>Upload ID proof</li><li>Accept company policies</li>
+</ul>
+```
+
+## Lab 30: Final Review and Corporate Single-Page Output
+What you learn:
+- Review complete single-page onboarding structure.
+- Ensure fields are meaningful and beginner-friendly.
+- Deliver final corporate onboarding HTML page.
+
+Add these 2 lines near top of body:
+```html
+<h2>Corporate New Hire Registration</h2>
+<p>Please complete the onboarding in one sitting.</p>
+```
+
+---
+
+## Final Full Page (Reference Output)
+Use this final version after completing all 30 labs.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lab 11 - Name Input</title>
+  <title>Corporate Onboarding</title>
 </head>
 <body>
-  <form>
+  <h1>Acme Corp Employee Onboarding</h1>
+  <h2>Corporate New Hire Registration</h2>
+  <p>Welcome to your onboarding portal.</p>
+  <p>Please complete this form to create your company profile.</p>
+  <p>All mandatory fields must be filled.</p>
+  <p>Please complete the onboarding in one sitting.</p>
+
+  <a href="#onboarding-form">Jump to Form</a>
+  <hr>
+
+  <form id="onboarding-form" action="/submit" method="post">
+    <h2>Section 1: Basic Information</h2>
+    <p>Enter your personal details.</p>
+
     <label for="fullName">Full Name</label>
     <input type="text" id="fullName" name="fullName">
-  </form>
-</body>
-</html>
-```
 
-## Lab 12: Email Input Field
-What this lab teaches:
-- Use email input type.
-- Enable native email validation behavior.
-- Collect primary communication info.
+    <label for="workEmail">Work Email</label>
+    <input type="email" id="workEmail" name="workEmail">
 
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 12 - Email Input</title>
-</head>
-<body>
-  <form>
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email">
-  </form>
-</body>
-</html>
-```
+    <label for="employeeId">Employee ID</label>
+    <input type="text" id="employeeId" name="employeeId">
 
-## Lab 13: Password Input Field
-What this lab teaches:
-- Add secure-looking password input.
-- Set minimum length with attributes.
-- Encourage stronger account setup.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 13 - Password Input</title>
-</head>
-<body>
-  <form>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" minlength="8" required>
-  </form>
-</body>
-</html>
-```
-
-## Lab 14: Phone Number Input Field
-What this lab teaches:
-- Collect contact number using tel input.
-- Add a pattern for expected format.
-- Handle phone details in onboarding.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 14 - Phone Input</title>
-</head>
-<body>
-  <form>
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
-  </form>
-</body>
-</html>
-```
-
-## Lab 15: Date of Birth Input Field
-What this lab teaches:
-- Use date input type correctly.
-- Capture user DOB with structured format.
-- Apply min and max bounds when needed.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 15 - Date Input</title>
-</head>
-<body>
-  <form>
-    <label for="dob">Date of Birth</label>
-    <input type="date" id="dob" name="dob">
-  </form>
-</body>
-</html>
-```
-
-## Lab 16: Dropdown for User Type
-What this lab teaches:
-- Build a select dropdown.
-- Offer predefined onboarding roles.
-- Capture role using option values.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 16 - Dropdown</title>
-</head>
-<body>
-  <form>
-    <label for="userType">User Type</label>
-    <select id="userType" name="userType">
-      <option value="student">Student</option>
-      <option value="professional">Professional</option>
-      <option value="other">Other</option>
+    <label for="department">Department</label>
+    <select id="department" name="department">
+      <option value="engineering">Engineering</option>
+      <option value="hr">HR</option>
+      <option value="finance">Finance</option>
     </select>
+    <br>
+
+    <label for="jobTitle">Job Title</label>
+    <input type="text" id="jobTitle" name="jobTitle">
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone">
+
+    <label for="joiningDate">Date of Joining</label>
+    <input type="date" id="joiningDate" name="joiningDate">
+
+    <label for="officeLocation">Office Location</label>
+    <input type="text" id="officeLocation" name="officeLocation">
+
+    <p>Work Mode</p>
+    <label><input type="radio" name="workMode" value="onsite"> Onsite</label>
+    <label><input type="radio" name="workMode" value="hybrid"> Hybrid</label>
+    <label><input type="radio" name="workMode" value="remote"> Remote</label>
+    <br>
+
+    <p>Primary Skills</p>
+    <label><input type="checkbox" name="skills" value="communication"> Communication</label>
+    <label><input type="checkbox" name="skills" value="technical"> Technical</label>
+    <label><input type="checkbox" name="skills" value="leadership"> Leadership</label>
+    <br>
+
+    <label for="managerName">Reporting Manager</label>
+    <input type="text" id="managerName" name="managerName">
+
+    <label for="emergencyName">Emergency Contact Name</label>
+    <input type="text" id="emergencyName" name="emergencyName">
+
+    <label for="emergencyPhone">Emergency Contact Phone</label>
+    <input type="tel" id="emergencyPhone" name="emergencyPhone">
+
+    <label for="address">Residential Address</label>
+    <textarea id="address" name="address" rows="3" cols="40"></textarea>
+
+    <label for="idProof">Upload ID Proof</label>
+    <input type="file" id="idProof" name="idProof">
+
+    <label for="profilePhoto">Upload Profile Photo</label>
+    <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+
+    <label><input type="checkbox" name="terms" required> I agree to company policies.</label>
+    <br>
+
+    <a href="/terms">Terms of Use</a>
+    <a href="/privacy">Privacy Policy</a>
+
+    <ul>
+      <li>Fill all required fields</li>
+      <li>Upload ID proof</li>
+      <li>Accept company policies</li>
+    </ul>
+
+    <button type="submit">Submit Onboarding</button>
+    <button type="reset">Reset Form</button>
   </form>
-</body>
-</html>
-```
 
-## Lab 17: Radio Buttons for Single Choice
-What this lab teaches:
-- Create mutually exclusive choices.
-- Group radio buttons by shared name.
-- Capture one onboarding preference.
+  <h2>Need Help?</h2>
+  <p>Email: hr@acmecorp.com</p>
+  <p>Phone: +1-555-0100</p>
 
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 17 - Radio Buttons</title>
-</head>
-<body>
-  <form>
-    <p>Preferred Contact Method</p>
-    <label><input type="radio" name="contactMethod" value="email"> Email</label>
-    <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
-  </form>
-</body>
-</html>
-```
-
-## Lab 18: Checkboxes for Multiple Interests
-What this lab teaches:
-- Collect multiple selections from users.
-- Use checkbox groups effectively.
-- Capture onboarding interests.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 18 - Checkboxes</title>
-</head>
-<body>
-  <form>
-    <p>Select Interests</p>
-    <label><input type="checkbox" name="interests" value="web"> Web</label>
-    <label><input type="checkbox" name="interests" value="ai"> AI</label>
-    <label><input type="checkbox" name="interests" value="cloud"> Cloud</label>
-  </form>
-</body>
-</html>
-```
-
-## Lab 19: Textarea for User Goals
-What this lab teaches:
-- Add multiline inputs for free text.
-- Capture user goals and expectations.
-- Set rows and cols for entry area.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 19 - Textarea</title>
-</head>
-<body>
-  <form>
-    <label for="goals">Your Onboarding Goal</label>
-    <textarea id="goals" name="goals" rows="4" cols="40"></textarea>
-  </form>
-</body>
-</html>
-```
-
-## Lab 20: File Upload for Profile Photo
-What this lab teaches:
-- Create file upload input.
-- Limit file type with accept attribute.
-- Prepare onboarding for profile image.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 20 - File Upload</title>
-</head>
-<body>
-  <form enctype="multipart/form-data">
-    <label for="photo">Upload Profile Photo</label>
-    <input type="file" id="photo" name="photo" accept="image/*">
-  </form>
-</body>
-</html>
-```
-
-## Lab 21: Grouping Fields with Fieldset
-What this lab teaches:
-- Group related form controls semantically.
-- Use legend to describe grouped fields.
-- Improve accessibility and clarity.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 21 - Fieldset</title>
-</head>
-<body>
-  <form>
-    <fieldset>
-      <legend>Account Information</legend>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name">
-      <label for="mail">Email</label>
-      <input type="email" id="mail" name="mail">
-    </fieldset>
-  </form>
-</body>
-</html>
-```
-
-## Lab 22: Label and Input Pairing
-What this lab teaches:
-- Properly connect labels to controls.
-- Increase click area and accessibility.
-- Avoid orphan form fields.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 22 - Labels and Inputs</title>
-</head>
-<body>
-  <form>
-    <label for="city">City</label>
-    <input type="text" id="city" name="city">
-  </form>
-</body>
-</html>
-```
-
-## Lab 23: Required Field Validation
-What this lab teaches:
-- Mark mandatory fields with required.
-- Use minlength/maxlength where needed.
-- Improve form completeness at submit time.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 23 - Required Validation</title>
-</head>
-<body>
-  <form>
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required minlength="4" maxlength="20">
-    <button type="submit">Submit</button>
-  </form>
-</body>
-</html>
-```
-
-## Lab 24: Submit and Reset Buttons
-What this lab teaches:
-- Use submit button to send form data.
-- Use reset button carefully.
-- Set clear actions for users.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 24 - Buttons</title>
-</head>
-<body>
-  <form>
-    <label for="company">Company</label>
-    <input type="text" id="company" name="company">
-    <button type="submit">Create Account</button>
-    <button type="reset">Clear Form</button>
-  </form>
-</body>
-</html>
-```
-
-## Lab 25: Terms Acceptance Checkbox
-What this lab teaches:
-- Add legal acceptance input.
-- Mark consent as required.
-- Support compliant onboarding flow.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 25 - Terms Checkbox</title>
-</head>
-<body>
-  <form>
-    <label>
-      <input type="checkbox" name="terms" required>
-      I agree to the Terms and Privacy Policy.
-    </label>
-    <button type="submit">Continue</button>
-  </form>
-</body>
-</html>
-```
-
-## Lab 26: Confirmation Message Section
-What this lab teaches:
-- Show static confirmation content.
-- Guide users to the next step.
-- Add clear completion messaging.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 26 - Confirmation Message</title>
-</head>
-<body>
-  <section>
-    <h1>Registration Submitted</h1>
-    <p>Thank you. Your onboarding request is under review.</p>
-    <p>Check your email for confirmation details.</p>
-  </section>
-</body>
-</html>
-```
-
-## Lab 27: Help and Contact Section
-What this lab teaches:
-- Add support details in-page.
-- Provide help links and contact info.
-- Improve onboarding trust and clarity.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 27 - Help Section</title>
-</head>
-<body>
-  <section>
-    <h2>Need Help?</h2>
-    <p>Email: support@example.com</p>
-    <p>Phone: +1 555 123 4567</p>
-  </section>
-</body>
-</html>
-```
-
-## Lab 28: Basic Accessibility in Forms
-What this lab teaches:
-- Use fieldset and legend for grouped controls.
-- Add clear labels and instructions.
-- Improve keyboard and screen reader usability.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 28 - Accessibility Basics</title>
-</head>
-<body>
-  <form>
-    <fieldset>
-      <legend>Communication Preferences</legend>
-      <label for="emailOpt">Email Updates</label>
-      <input type="checkbox" id="emailOpt" name="emailOpt">
-    </fieldset>
-  </form>
-</body>
-</html>
-```
-
-## Lab 29: Reviewing and Testing the Page
-What this lab teaches:
-- Check semantic structure manually.
-- Test form fields and required validations.
-- Verify links and content completeness.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lab 29 - Review Template</title>
-</head>
-<body>
-  <h1>Onboarding QA Checklist</h1>
-  <ul>
-    <li>All fields have labels</li>
-    <li>Required fields are marked</li>
-    <li>Terms checkbox exists</li>
-    <li>Submit button is present</li>
-  </ul>
-</body>
-</html>
-```
-
-## Lab 30: Final Single-Page Onboarding Form Project
-What this lab teaches:
-- Combine all basic onboarding sections.
-- Build one complete HTML-only onboarding page.
-- Produce a practical beginner-ready final lab.
-
-Example:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 30 - Final Onboarding Page</title>
-</head>
-<body>
-  <header>
-    <h1>User Onboarding</h1>
-    <p>Complete this form to create your account.</p>
-  </header>
-
-  <main>
-    <form action="/onboard" method="post" enctype="multipart/form-data">
-      <fieldset>
-        <legend>Account Details</legend>
-
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" minlength="8" required>
-
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
-
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob">
-      </fieldset>
-
-      <fieldset>
-        <legend>Profile</legend>
-
-        <label for="role">User Type</label>
-        <select id="role" name="role">
-          <option value="student">Student</option>
-          <option value="professional">Professional</option>
-          <option value="other">Other</option>
-        </select>
-
-        <p>Preferred Contact Method</p>
-        <label><input type="radio" name="contactMethod" value="email"> Email</label>
-        <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
-
-        <p>Interests</p>
-        <label><input type="checkbox" name="interests" value="web"> Web</label>
-        <label><input type="checkbox" name="interests" value="ai"> AI</label>
-        <label><input type="checkbox" name="interests" value="cloud"> Cloud</label>
-
-        <label for="goals">Your Goal</label>
-        <textarea id="goals" name="goals" rows="4" cols="40"></textarea>
-
-        <label for="photo">Profile Photo</label>
-        <input type="file" id="photo" name="photo" accept="image/*">
-      </fieldset>
-
-      <fieldset>
-        <legend>Consent</legend>
-        <label><input type="checkbox" name="terms" required> I agree to Terms and Privacy Policy</label>
-      </fieldset>
-
-      <button type="submit">Submit Onboarding</button>
-      <button type="reset">Reset Form</button>
-    </form>
-
-    <section>
-      <h2>Need Help?</h2>
-      <p>Email: support@example.com</p>
-    </section>
-  </main>
+  <h2>After Submission</h2>
+  <p>You will receive a confirmation email within 24 hours.</p>
+  <p>Keep your Employee ID handy for verification.</p>
 </body>
 </html>
 ```
