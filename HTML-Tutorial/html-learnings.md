@@ -1,501 +1,795 @@
-# HTML Learnings: 100 Modules
-
-## Module 1: HTML Basics and Page Structure
-- Understand what HTML is and how browsers read markup.
-- Build a valid document with doctype, html, head, and body.
-- Organize visible content into meaningful sections.
-
-## Module 2: Head Tags and Metadata
-- Use title, meta charset, and viewport correctly.
-- Add description metadata for search snippets.
-- Prepare social preview metadata basics.
-
-## Module 3: Headings and Paragraphs
-- Apply h1 to h6 in logical content hierarchy.
-- Write readable paragraphs with clear grouping.
-- Avoid heading misuse for visual styling only.
-
-## Module 4: Text Formatting Elements
-- Use strong, em, mark, small, and del semantically.
-- Distinguish presentational and semantic text tags.
-- Improve readability without harming accessibility.
-
-## Module 5: Line Breaks and Horizontal Rules
-- Use br only for meaningful line breaks.
-- Separate thematic sections with hr appropriately.
-- Keep spacing in CSS instead of excessive markup.
-
-## Module 6: Comments and Code Readability
-- Add HTML comments for section guidance.
-- Keep comments short and maintainable.
-- Structure markup for easier team collaboration.
-
-## Module 7: Lists Overview
-- Create ordered, unordered, and description lists.
-- Choose list type based on content meaning.
-- Nest lists without breaking hierarchy.
-
-## Module 8: Ordered and Unordered Lists
-- Configure ordered list numbering styles.
-- Build clean bullet lists for navigation and notes.
-- Maintain list semantics for assistive tech.
-
-## Module 9: Description Lists
-- Use dl, dt, and dd for term definitions.
-- Format FAQs and glossaries semantically.
-- Avoid replacing table data with description lists.
-
-## Module 10: Links Fundamentals
-- Build absolute, relative, and anchor links.
-- Add accessible link text with clear intent.
-- Handle target and rel attributes safely.
-
-## Module 11: In-Page Navigation
-- Create section IDs for jump links.
-- Build table-of-contents style navigation.
-- Improve long-page usability with anchors.
-
-## Module 12: Images and Alt Text
-- Insert images with src and descriptive alt.
-- Decide when alt should be empty for decoration.
-- Set width and height to reduce layout shift.
-
-## Module 13: Figure and Figcaption
-- Group media and captions with figure elements.
-- Provide context for charts and screenshots.
-- Improve content clarity for all users.
-
-## Module 14: Image Formats and Optimization Basics
-- Compare JPG, PNG, SVG, and WebP use cases.
-- Choose efficient formats for speed and quality.
-- Apply responsive-friendly image practices.
-
-## Module 15: Paths and Project Folder Structure
-- Organize assets into predictable folders.
-- Resolve common relative path mistakes.
-- Keep portable links across environments.
-
-## Module 16: Audio Embeds
-- Add audio with controls and fallback text.
-- Use source elements for multiple file types.
-- Improve accessibility with transcript links.
-
-## Module 17: Video Embeds
-- Embed video with controls and poster images.
-- Add captions and subtitles with track.
-- Optimize loading behavior for performance.
-
-## Module 18: Iframe Basics
-- Embed external pages and media safely.
-- Set title and sandbox for better security.
-- Prevent layout issues with responsive wrappers.
-
-## Module 19: Block vs Inline Elements
-- Identify default display behavior of elements.
-- Choose proper element types for content meaning.
-- Avoid invalid nesting mistakes.
-
-## Module 20: Generic Containers Div and Span
-- Use div and span only when semantic tags do not fit.
-- Group content for styling and scripting hooks.
-- Keep class naming purposeful and scalable.
-
-## Module 21: Semantic Layout Tags
-- Build layouts with header, nav, main, section, and footer.
-- Improve document meaning for assistive technologies.
-- Replace overused div blocks with semantic alternatives.
-
-## Module 22: Article and Aside Patterns
-- Separate standalone content using article.
-- Place supporting content in aside correctly.
-- Structure blog and news style pages semantically.
-
-## Module 23: Time and Address Elements
-- Mark dates and times with machine-readable values.
-- Use address for contact information semantics.
-- Improve parsing for crawlers and tools.
-
-## Module 24: Abbreviation and Citation Tags
-- Expand abbreviations with abbr title.
-- Reference sources using cite and blockquote.
-- Add attribution for quoted content properly.
-
-## Module 25: Preformatted Text and Code Blocks
-- Display code snippets with pre and code.
-- Preserve whitespace where content requires it.
-- Escape special characters in examples.
-
-## Module 26: Character Entities
-- Insert reserved symbols with HTML entities.
-- Handle non-breaking spaces and typographic marks.
-- Prevent parsing errors from raw special characters.
-
-## Module 27: Intro to HTML Forms
-- Build basic forms with method and action.
-- Understand GET vs POST request behavior.
-- Group and label controls for usability.
-
-## Module 28: Text Inputs and Labels
-- Connect labels to inputs with for and id.
-- Configure text, email, password, and search fields.
-- Improve form completion speed and accuracy.
-
-## Module 29: Form Validation Attributes
-- Apply required, minlength, maxlength, and pattern.
-- Use type-specific validation for email and url.
-- Provide helpful error messaging strategy.
-
-## Module 30: Number, Date, and Range Inputs
-- Use number, date, time, and range controls.
-- Set min, max, and step constraints.
-- Balance native controls with user expectations.
-
-## Module 31: Checkbox and Radio Groups
-- Build single and multiple choice questions.
-- Set defaults and values for submission.
-- Improve accessibility with fieldset and legend.
-
-## Module 32: Select Menus and Datalists
-- Create dropdown menus with option grouping.
-- Add autocomplete suggestions with datalist.
-- Decide between select, datalist, and radios.
-
-## Module 33: Textarea and User Messages
-- Configure multiline input fields correctly.
-- Use placeholder and maxlength responsibly.
-- Design message forms with clear guidance.
-
-## Module 34: Buttons and Form Actions
-- Differentiate submit, reset, and button types.
-- Trigger alternate endpoints with formaction.
-- Prevent accidental submissions with proper defaults.
-
-## Module 35: Hidden Inputs and Metadata
-- Send hidden values safely in forms.
-- Understand client-side visibility limitations.
-- Use hidden fields for state tracking basics.
-
-## Module 36: File Upload Inputs
-- Build single and multiple file upload fields.
-- Restrict file types with accept attribute.
-- Handle multipart form data requirements.
-
-## Module 37: Grouping Forms with Fieldset
-- Organize form sections with fieldset.
-- Add context labels using legend.
-- Improve keyboard and screen reader navigation.
-
-## Module 38: Output and Progress Elements
-- Display calculated results with output.
-- Show task status using progress and meter.
-- Communicate completion states clearly.
-
-## Module 39: Form Accessibility Essentials
-- Create keyboard-friendly form workflows.
-- Connect errors to fields for assistive tools.
-- Use aria-describedby for extra guidance.
-
-## Module 40: Native Form UX Enhancements
-- Enable autocomplete for faster input.
-- Use inputmode and enterkeyhint effectively.
-- Improve mobile form experience with minimal effort.
-
-## Module 41: Tables Introduction
-- Build simple data tables with semantic elements.
-- Separate headers from data cells.
-- Avoid tables for non-tabular layouts.
-
-## Module 42: Table Structure and Sections
-- Use thead, tbody, and tfoot correctly.
-- Keep column meanings consistent across rows.
-- Improve maintainability of large tables.
-
-## Module 43: Table Headers and Scope
-- Assign th and scope for contextual reading.
-- Support screen readers with clear header mapping.
-- Prevent ambiguous data relationships.
-
-## Module 44: Merged Cells in Tables
-- Use rowspan and colspan intentionally.
-- Plan grid structures before merging cells.
-- Maintain readability in complex data views.
-
-## Module 45: Captions and Accessible Tables
-- Add captions for table purpose and context.
-- Write summary-style context around data.
-- Improve comprehension for all readers.
-
-## Module 46: Colgroup and Column Styling Hooks
-- Define column groups with colgroup.
-- Apply column-level styling hooks cleanly.
-- Keep structural and visual concerns separated.
-
-## Module 47: HTML5 Structural Patterns
-- Combine semantic regions into full-page patterns.
-- Create reusable layout skeletons.
-- Prepare markup for scalable CSS architecture.
-
-## Module 48: Navigation Menus in HTML
-- Build list-based nav menus semantically.
-- Mark active pages with aria-current.
-- Structure multi-level navigation cleanly.
-
-## Module 49: Breadcrumb Markup
-- Create breadcrumb trails with ordered lists.
-- Improve location awareness in deep sites.
-- Add aria labels for navigation landmarks.
-
-## Module 50: Hero and Intro Sections
-- Structure impactful introductory content blocks.
-- Use heading and supporting copy hierarchy.
-- Keep markup flexible for responsive design.
-
-## Module 51: Cards and Repeated Content Blocks
-- Mark up card grids with semantic grouping.
-- Keep repeated content patterns consistent.
-- Prepare cards for accessibility and SEO.
-
-## Module 52: FAQ Sections with Details and Summary
-- Build native expandable FAQ components.
-- Use details and summary without JavaScript.
-- Improve discoverability of common answers.
-
-## Module 53: Dialog and Modal Basics
-- Understand native dialog element usage.
-- Build semantic modal markup foundations.
-- Manage focus expectations for accessibility.
-
-## Module 54: Templates and Document Fragments
-- Use template for reusable hidden markup.
-- Clone template content safely with scripts.
-- Keep initial DOM lightweight.
-
-## Module 55: Data Attributes for Custom Data
-- Store custom values using data attributes.
-- Access structured hints for JavaScript behavior.
-- Keep markup declarative and maintainable.
-
-## Module 56: ARIA Roles Introduction
-- Learn when native semantics are enough.
-- Add ARIA roles only when necessary.
-- Avoid common role misuse patterns.
-
-## Module 57: ARIA States and Properties
-- Apply aria-expanded and aria-hidden correctly.
-- Communicate UI state changes to assistive tech.
-- Pair ARIA attributes with interactive behavior.
-
-## Module 58: Landmark Navigation and Skip Links
-- Add skip links for keyboard users.
-- Define landmarks for fast page traversal.
-- Improve accessibility in long content pages.
-
-## Module 59: Accessible Media Content
-- Provide captions and transcripts for media.
-- Ensure controls are keyboard operable.
-- Add descriptive context around embedded media.
-
-## Module 60: Language and Direction Attributes
-- Set document language with lang.
-- Handle right-to-left content with dir.
-- Improve pronunciation and rendering behavior.
-
-## Module 61: SEO Fundamentals in HTML
-- Write optimized titles and descriptions.
-- Use heading hierarchy for crawl clarity.
-- Avoid duplicate metadata issues.
-
-## Module 62: Open Graph and Social Cards
-- Configure og tags for social sharing.
-- Add Twitter card metadata essentials.
-- Validate preview behavior across platforms.
-
-## Module 63: Canonical Links and Duplicate Content
-- Declare canonical URLs correctly.
-- Reduce duplicate indexing risks.
-- Align canonical strategy with site structure.
-
-## Module 64: Structured Data Basics
-- Add JSON-LD for rich search results.
-- Understand schema types for common pages.
-- Validate markup with testing tools.
-
-## Module 65: Favicons and App Icons
-- Include favicon and touch icon assets.
-- Support multiple platforms and sizes.
-- Prevent missing icon requests and errors.
-
-## Module 66: Performance-Oriented HTML
-- Use resource hints like preload and preconnect.
-- Load scripts efficiently with defer.
-- Reduce render-blocking resource impact.
-
-## Module 67: Lazy Loading Images and Iframes
-- Enable native lazy loading attributes.
-- Prioritize above-the-fold content correctly.
-- Balance speed improvements and UX stability.
-
-## Module 68: Critical Rendering Path Awareness
-- Identify HTML decisions affecting first paint.
-- Order resources to speed page display.
-- Minimize costly synchronous dependencies.
-
-## Module 69: Script Tag Strategies
-- Compare inline, external, async, and defer scripts.
-- Prevent DOM timing-related errors.
-- Improve script execution predictability.
-
-## Module 70: Noscript and Fallback Content
-- Add graceful fallbacks for disabled JavaScript.
-- Preserve key functionality without scripts.
-- Communicate limitations clearly to users.
-
-## Module 71: Embedding SVG in HTML
-- Use inline and external SVG approaches.
-- Add accessible titles and descriptions to SVG.
-- Keep vector graphics scalable and sharp.
-
-## Module 72: Responsive Images with Srcset
-- Build adaptive image sets with srcset and sizes.
-- Serve appropriate image resolutions by viewport.
-- Reduce unnecessary bandwidth on mobile.
-
-## Module 73: Picture Element for Art Direction
-- Switch images by media conditions.
-- Provide modern and fallback image formats.
-- Control composition across device breakpoints.
-
-## Module 74: Internationalization Markup Basics
-- Mark localized text regions correctly.
-- Handle mixed-language paragraphs with span lang.
-- Prepare pages for translation workflows.
-
-## Module 75: Accessibility Testing Checklist in HTML
-- Create a repeatable HTML accessibility checklist.
-- Verify heading, landmarks, labels, and alt text.
-- Catch common issues before CSS or JS layers.
-
-## Module 76: HTML Validation and Linting
-- Validate markup against standards.
-- Identify and fix common nesting errors.
-- Integrate linting into workflow basics.
-
-## Module 77: Building a Personal Profile Page
-- Plan semantic sections for a profile layout.
-- Mark up skills, bio, and contact links.
-- Apply clean document structure from scratch.
-
-## Module 78: Building a Product Landing Page
-- Structure hero, features, testimonials, and CTA.
-- Use semantic grouping for marketing content.
-- Prepare markup for conversion-focused design.
-
-## Module 79: Building a Blog Post Page
-- Mark up article title, metadata, and body.
-- Include author, publish date, and tags.
-- Add related posts and navigation aids.
-
-## Module 80: Building a Documentation Page
-- Create clear headings and section anchors.
-- Build side navigation and content landmarks.
-- Improve readability for long technical pages.
-
-## Module 81: Building a Contact Form Page
-- Combine fields, labels, and validation patterns.
-- Add status messaging and help text zones.
-- Structure support and contact alternatives.
-
-## Module 82: Building a Pricing Page
-- Mark up plan cards and feature comparisons.
-- Present pricing details with clear semantics.
-- Highlight recommended plans accessibly.
-
-## Module 83: Building a Portfolio Gallery
-- Structure project cards with figures and links.
-- Add filtering hooks with data attributes.
-- Ensure media captions provide project context.
-
-## Module 84: Building an FAQ Help Center Page
-- Group questions by category sections.
-- Use expandable patterns with details elements.
-- Add search form and support escalation links.
-
-## Module 85: Building an Event Registration Page
-- Collect attendee details through structured forms.
-- Present event agenda and logistics sections.
-- Add confirmation and policy content blocks.
-
-## Module 86: Building a Restaurant Menu Page
-- Organize categories and dish descriptions semantically.
-- Mark up pricing and dietary notes clearly.
-- Add reservation and contact action links.
-
-## Module 87: Building a Course Curriculum Page
-- Present module lists with progress cues.
-- Structure lessons and outcomes clearly.
-- Add enrollment and prerequisite callouts.
-
-## Module 88: Building a News Homepage Layout
-- Mark up top stories and category sections.
-- Differentiate headlines, summaries, and metadata.
-- Add accessible navigation for dense content.
-
-## Module 89: Building an E-Commerce Product Page
-- Structure product title, gallery, and price details.
-- Mark up specs, reviews, and availability.
-- Prepare add-to-cart form semantics.
-
-## Module 90: Building a Checkout Flow Skeleton
-- Design step-based checkout page structure.
-- Group billing, shipping, and payment sections.
-- Add order summary and legal consent areas.
-
-## Module 91: Building a Dashboard Markup Skeleton
-- Create semantic regions for stats and panels.
-- Mark up tables, filters, and quick actions.
-- Prepare layout hooks for future interactivity.
-
-## Module 92: Building a Knowledge Base Article Page
-- Organize article content with clear hierarchy.
-- Add breadcrumb and related article links.
-- Include feedback controls and support links.
-
-## Module 93: Building a Job Listing Page
-- Mark up role details and qualification lists.
-- Create application CTA and contact sections.
-- Structure multiple job cards consistently.
-
-## Module 94: Building a Team Directory Page
-- Present member cards with roles and contacts.
-- Add departments and sorting filter hooks.
-- Keep profile semantics accessible and consistent.
-
-## Module 95: Building a Multi-Section Single Page Site
-- Combine anchor navigation with page sections.
-- Maintain heading flow across full-page layout.
-- Improve scanability with semantic landmarks.
-
-## Module 96: HTML for Email-Compatible Templates
-- Learn email-safe markup constraints.
-- Structure content for broad client compatibility.
-- Avoid unsupported modern HTML features.
-
-## Module 97: Progressive Enhancement Mindset
-- Start with functional semantic HTML first.
-- Layer CSS and JS without breaking core use.
-- Build resilient experiences for varied devices.
-
-## Module 98: HTML Security Considerations
-- Understand risks of untrusted content injection.
-- Use safe link practices with rel attributes.
-- Avoid exposing sensitive data in markup.
-
-## Module 99: Capstone Project Planning in HTML
-- Define page goals, audience, and information flow.
-- Choose semantic patterns for each content type.
-- Prepare a clean markup implementation plan.
-
-## Module 100: Capstone Build and Review
-- Build a complete multi-page semantic HTML project.
-- Run accessibility and validation checks.
-- Present final structure with rationale and improvements.
+# HTML Learnings - 30 Basic Single-Page Labs
+
+Goal: Learn HTML by building a single-page onboarding website.
+Rule: Every lab is independent and can be run as a standalone HTML file.
+Constraint: Use only HTML. No CSS. No JavaScript.
+
+## Lab 1: What Is a Single-Page Onboarding Screen
+What this lab teaches:
+- Understand what onboarding means on one page.
+- Identify common sections: intro, form, confirmation.
+- Build a simple semantic page flow.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 1 - Single Page Onboarding</title>
+</head>
+<body>
+  <header>
+    <h1>Welcome to QuickStart Onboarding</h1>
+  </header>
+  <main>
+    <section>
+      <h2>What You Will Do</h2>
+      <p>Share your details and complete setup in one page.</p>
+    </section>
+  </main>
+</body>
+</html>
+```
+
+## Lab 2: Basic HTML Page Setup
+What this lab teaches:
+- Create a valid HTML document.
+- Use head and body correctly.
+- Keep a clean structure for future sections.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 2 - HTML Setup</title>
+</head>
+<body>
+  <h1>Onboarding Page</h1>
+  <p>This page has a valid HTML foundation.</p>
+</body>
+</html>
+```
+
+## Lab 3: Page Title and Meta Tags
+What this lab teaches:
+- Add a useful browser tab title.
+- Set character encoding and viewport.
+- Prepare metadata for readability and SEO basics.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Single-page user onboarding form.">
+  <title>Lab 3 - Metadata</title>
+</head>
+<body>
+  <h1>Metadata Ready Page</h1>
+</body>
+</html>
+```
+
+## Lab 4: Headings and Simple Text Content
+What this lab teaches:
+- Use headings in the right order.
+- Group text into meaningful paragraphs.
+- Improve page scanability.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 4 - Headings and Text</title>
+</head>
+<body>
+  <h1>User Onboarding</h1>
+  <h2>Step Overview</h2>
+  <p>Complete your profile and preferences to get started.</p>
+</body>
+</html>
+```
+
+## Lab 5: Intro Section for New Users
+What this lab teaches:
+- Build a clear welcome section.
+- Explain onboarding purpose quickly.
+- Guide users to start action.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 5 - Intro Section</title>
+</head>
+<body>
+  <section>
+    <h1>Welcome, New User</h1>
+    <p>We need a few details to set up your account.</p>
+    <p>Start by filling the form below.</p>
+  </section>
+</body>
+</html>
+```
+
+## Lab 6: Using Paragraphs for Instructions
+What this lab teaches:
+- Write readable form instructions.
+- Break content into short paragraphs.
+- Reduce confusion before user input.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 6 - Instruction Paragraphs</title>
+</head>
+<body>
+  <h1>Instructions</h1>
+  <p>Use your real email so we can send updates.</p>
+  <p>Fields marked required must be filled.</p>
+  <p>Review details before submitting.</p>
+</body>
+</html>
+```
+
+## Lab 7: Creating Step-by-Step Lists
+What this lab teaches:
+- Use ordered lists for onboarding steps.
+- Make process flow clear.
+- Add checklist-like clarity.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 7 - Step List</title>
+</head>
+<body>
+  <h1>Onboarding Steps</h1>
+  <ol>
+    <li>Enter account details</li>
+    <li>Select preferences</li>
+    <li>Submit and confirm</li>
+  </ol>
+</body>
+</html>
+```
+
+## Lab 8: Adding Simple Navigation Links
+What this lab teaches:
+- Add section links on one page.
+- Use fragment IDs for quick jumps.
+- Improve movement across long forms.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 8 - Navigation Links</title>
+</head>
+<body>
+  <nav>
+    <a href="#account">Account</a> |
+    <a href="#preferences">Preferences</a> |
+    <a href="#submit">Submit</a>
+  </nav>
+
+  <h2 id="account">Account</h2>
+  <p>Account details section.</p>
+
+  <h2 id="preferences">Preferences</h2>
+  <p>Preferences section.</p>
+
+  <h2 id="submit">Submit</h2>
+  <p>Final submission section.</p>
+</body>
+</html>
+```
+
+## Lab 9: Adding Images with Alt Text
+What this lab teaches:
+- Insert images in onboarding pages.
+- Write meaningful alt text.
+- Keep decorative and informative images distinct.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 9 - Images and Alt Text</title>
+</head>
+<body>
+  <h1>Profile Setup</h1>
+  <img src="profile-placeholder.png" alt="Placeholder avatar for new user profile">
+</body>
+</html>
+```
+
+## Lab 10: Form Tag Basics
+What this lab teaches:
+- Create a basic form element.
+- Set method and action attributes.
+- Prepare form for user onboarding input.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 10 - Form Basics</title>
+</head>
+<body>
+  <form action="/submit-onboarding" method="post">
+    <p>Simple onboarding form container.</p>
+  </form>
+</body>
+</html>
+```
+
+## Lab 11: Name Input Field
+What this lab teaches:
+- Add a text input for full name.
+- Use label and id pairing.
+- Capture identity basics.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 11 - Name Input</title>
+</head>
+<body>
+  <form>
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName">
+  </form>
+</body>
+</html>
+```
+
+## Lab 12: Email Input Field
+What this lab teaches:
+- Use email input type.
+- Enable native email validation behavior.
+- Collect primary communication info.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 12 - Email Input</title>
+</head>
+<body>
+  <form>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email">
+  </form>
+</body>
+</html>
+```
+
+## Lab 13: Password Input Field
+What this lab teaches:
+- Add secure-looking password input.
+- Set minimum length with attributes.
+- Encourage stronger account setup.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 13 - Password Input</title>
+</head>
+<body>
+  <form>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" minlength="8" required>
+  </form>
+</body>
+</html>
+```
+
+## Lab 14: Phone Number Input Field
+What this lab teaches:
+- Collect contact number using tel input.
+- Add a pattern for expected format.
+- Handle phone details in onboarding.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 14 - Phone Input</title>
+</head>
+<body>
+  <form>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+  </form>
+</body>
+</html>
+```
+
+## Lab 15: Date of Birth Input Field
+What this lab teaches:
+- Use date input type correctly.
+- Capture user DOB with structured format.
+- Apply min and max bounds when needed.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 15 - Date Input</title>
+</head>
+<body>
+  <form>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob">
+  </form>
+</body>
+</html>
+```
+
+## Lab 16: Dropdown for User Type
+What this lab teaches:
+- Build a select dropdown.
+- Offer predefined onboarding roles.
+- Capture role using option values.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 16 - Dropdown</title>
+</head>
+<body>
+  <form>
+    <label for="userType">User Type</label>
+    <select id="userType" name="userType">
+      <option value="student">Student</option>
+      <option value="professional">Professional</option>
+      <option value="other">Other</option>
+    </select>
+  </form>
+</body>
+</html>
+```
+
+## Lab 17: Radio Buttons for Single Choice
+What this lab teaches:
+- Create mutually exclusive choices.
+- Group radio buttons by shared name.
+- Capture one onboarding preference.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 17 - Radio Buttons</title>
+</head>
+<body>
+  <form>
+    <p>Preferred Contact Method</p>
+    <label><input type="radio" name="contactMethod" value="email"> Email</label>
+    <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+  </form>
+</body>
+</html>
+```
+
+## Lab 18: Checkboxes for Multiple Interests
+What this lab teaches:
+- Collect multiple selections from users.
+- Use checkbox groups effectively.
+- Capture onboarding interests.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 18 - Checkboxes</title>
+</head>
+<body>
+  <form>
+    <p>Select Interests</p>
+    <label><input type="checkbox" name="interests" value="web"> Web</label>
+    <label><input type="checkbox" name="interests" value="ai"> AI</label>
+    <label><input type="checkbox" name="interests" value="cloud"> Cloud</label>
+  </form>
+</body>
+</html>
+```
+
+## Lab 19: Textarea for User Goals
+What this lab teaches:
+- Add multiline inputs for free text.
+- Capture user goals and expectations.
+- Set rows and cols for entry area.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 19 - Textarea</title>
+</head>
+<body>
+  <form>
+    <label for="goals">Your Onboarding Goal</label>
+    <textarea id="goals" name="goals" rows="4" cols="40"></textarea>
+  </form>
+</body>
+</html>
+```
+
+## Lab 20: File Upload for Profile Photo
+What this lab teaches:
+- Create file upload input.
+- Limit file type with accept attribute.
+- Prepare onboarding for profile image.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 20 - File Upload</title>
+</head>
+<body>
+  <form enctype="multipart/form-data">
+    <label for="photo">Upload Profile Photo</label>
+    <input type="file" id="photo" name="photo" accept="image/*">
+  </form>
+</body>
+</html>
+```
+
+## Lab 21: Grouping Fields with Fieldset
+What this lab teaches:
+- Group related form controls semantically.
+- Use legend to describe grouped fields.
+- Improve accessibility and clarity.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 21 - Fieldset</title>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Account Information</legend>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+      <label for="mail">Email</label>
+      <input type="email" id="mail" name="mail">
+    </fieldset>
+  </form>
+</body>
+</html>
+```
+
+## Lab 22: Label and Input Pairing
+What this lab teaches:
+- Properly connect labels to controls.
+- Increase click area and accessibility.
+- Avoid orphan form fields.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 22 - Labels and Inputs</title>
+</head>
+<body>
+  <form>
+    <label for="city">City</label>
+    <input type="text" id="city" name="city">
+  </form>
+</body>
+</html>
+```
+
+## Lab 23: Required Field Validation
+What this lab teaches:
+- Mark mandatory fields with required.
+- Use minlength/maxlength where needed.
+- Improve form completeness at submit time.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 23 - Required Validation</title>
+</head>
+<body>
+  <form>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required minlength="4" maxlength="20">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
+```
+
+## Lab 24: Submit and Reset Buttons
+What this lab teaches:
+- Use submit button to send form data.
+- Use reset button carefully.
+- Set clear actions for users.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 24 - Buttons</title>
+</head>
+<body>
+  <form>
+    <label for="company">Company</label>
+    <input type="text" id="company" name="company">
+    <button type="submit">Create Account</button>
+    <button type="reset">Clear Form</button>
+  </form>
+</body>
+</html>
+```
+
+## Lab 25: Terms Acceptance Checkbox
+What this lab teaches:
+- Add legal acceptance input.
+- Mark consent as required.
+- Support compliant onboarding flow.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 25 - Terms Checkbox</title>
+</head>
+<body>
+  <form>
+    <label>
+      <input type="checkbox" name="terms" required>
+      I agree to the Terms and Privacy Policy.
+    </label>
+    <button type="submit">Continue</button>
+  </form>
+</body>
+</html>
+```
+
+## Lab 26: Confirmation Message Section
+What this lab teaches:
+- Show static confirmation content.
+- Guide users to the next step.
+- Add clear completion messaging.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 26 - Confirmation Message</title>
+</head>
+<body>
+  <section>
+    <h1>Registration Submitted</h1>
+    <p>Thank you. Your onboarding request is under review.</p>
+    <p>Check your email for confirmation details.</p>
+  </section>
+</body>
+</html>
+```
+
+## Lab 27: Help and Contact Section
+What this lab teaches:
+- Add support details in-page.
+- Provide help links and contact info.
+- Improve onboarding trust and clarity.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 27 - Help Section</title>
+</head>
+<body>
+  <section>
+    <h2>Need Help?</h2>
+    <p>Email: support@example.com</p>
+    <p>Phone: +1 555 123 4567</p>
+  </section>
+</body>
+</html>
+```
+
+## Lab 28: Basic Accessibility in Forms
+What this lab teaches:
+- Use fieldset and legend for grouped controls.
+- Add clear labels and instructions.
+- Improve keyboard and screen reader usability.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 28 - Accessibility Basics</title>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Communication Preferences</legend>
+      <label for="emailOpt">Email Updates</label>
+      <input type="checkbox" id="emailOpt" name="emailOpt">
+    </fieldset>
+  </form>
+</body>
+</html>
+```
+
+## Lab 29: Reviewing and Testing the Page
+What this lab teaches:
+- Check semantic structure manually.
+- Test form fields and required validations.
+- Verify links and content completeness.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 29 - Review Template</title>
+</head>
+<body>
+  <h1>Onboarding QA Checklist</h1>
+  <ul>
+    <li>All fields have labels</li>
+    <li>Required fields are marked</li>
+    <li>Terms checkbox exists</li>
+    <li>Submit button is present</li>
+  </ul>
+</body>
+</html>
+```
+
+## Lab 30: Final Single-Page Onboarding Form Project
+What this lab teaches:
+- Combine all basic onboarding sections.
+- Build one complete HTML-only onboarding page.
+- Produce a practical beginner-ready final lab.
+
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 30 - Final Onboarding Page</title>
+</head>
+<body>
+  <header>
+    <h1>User Onboarding</h1>
+    <p>Complete this form to create your account.</p>
+  </header>
+
+  <main>
+    <form action="/onboard" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Account Details</legend>
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" minlength="8" required>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob">
+      </fieldset>
+
+      <fieldset>
+        <legend>Profile</legend>
+
+        <label for="role">User Type</label>
+        <select id="role" name="role">
+          <option value="student">Student</option>
+          <option value="professional">Professional</option>
+          <option value="other">Other</option>
+        </select>
+
+        <p>Preferred Contact Method</p>
+        <label><input type="radio" name="contactMethod" value="email"> Email</label>
+        <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+
+        <p>Interests</p>
+        <label><input type="checkbox" name="interests" value="web"> Web</label>
+        <label><input type="checkbox" name="interests" value="ai"> AI</label>
+        <label><input type="checkbox" name="interests" value="cloud"> Cloud</label>
+
+        <label for="goals">Your Goal</label>
+        <textarea id="goals" name="goals" rows="4" cols="40"></textarea>
+
+        <label for="photo">Profile Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+      </fieldset>
+
+      <fieldset>
+        <legend>Consent</legend>
+        <label><input type="checkbox" name="terms" required> I agree to Terms and Privacy Policy</label>
+      </fieldset>
+
+      <button type="submit">Submit Onboarding</button>
+      <button type="reset">Reset Form</button>
+    </form>
+
+    <section>
+      <h2>Need Help?</h2>
+      <p>Email: support@example.com</p>
+    </section>
+  </main>
+</body>
+</html>
+```
