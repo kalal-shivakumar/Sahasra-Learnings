@@ -466,37 +466,13 @@ cd C:\Users\P9202728\HTML-WebApp
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Web App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 { color: #333; }
-        p { color: #666; }
-    </style>
+    <title>Hello World</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Azure!</h1>
-        <p>This is a simple HTML web application deployed to Azure App Service.</p>
-    </div>
+    <h1>Hello World! 🚀</h1>
+    <p>Deployed on Azure App Service</p>
 </body>
 </html>
 ```
@@ -1155,12 +1131,11 @@ graph TB
 ### File: `.github/workflows/deploy.yml`
 
 ```yaml
-name: Deploy to Azure App Service
+name: Deploy to Azure
 
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -1170,22 +1145,18 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Login to Azure
-        uses: azure/login@v2
+      - uses: actions/checkout@v4
+      
+      - uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
+          client-id: ${{ secrets.CLIENTID }}
+          tenant-id: ${{ secrets.TENANTID }}
+          subscription-id: ${{ secrets.SUBSCRIPTIONID }}
+      
+      - uses: azure/webapps-deploy@v3
         with:
-          app-name: html-webapp-kalal
+          app-name: kalal-java-app
           package: .
 ```
 
