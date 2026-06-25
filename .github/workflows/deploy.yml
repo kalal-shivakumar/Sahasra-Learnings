@@ -24,7 +24,11 @@ jobs:
           cache: maven
 
       - name: Build JAR
-        run: mvn -B package -DskipTests --file pom.xml
+        run: |
+          echo "Building Maven project..."
+          mvn -B package -DskipTests --file pom.xml
+          echo "Build completed. Listing target directory:"
+          ls -la target/*.jar
 
       - name: Login to Azure
         uses: azure/login@v2
