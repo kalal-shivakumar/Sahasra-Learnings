@@ -1,6 +1,0 @@
-{
-    "name": "github-deploy-main",
-    "issuer": "https://token.actions.githubusercontent.com",
-    "subject": "repo:kalal-shivakumar/ram09:ref:refs/heads/main",
-    "audiences": ["api://AzureADTokenExchange"]
-}
