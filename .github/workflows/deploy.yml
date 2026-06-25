@@ -14,23 +14,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Login to Azure
+      - name: Verify index.html Exists
+        run: |
+          if [ -f "index.html" ]; then
+            echo "✓ index.html found"
+            ls -lh index.html
+            head -c 200 index.html
+          else
+            echo "✗ index.html not found!"
+            exit 1
+          fi
+
+      - name: Authenticate with Azure
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.CLIENTID }}
           tenant-id: ${{ secrets.TENANTID }}
           subscription-id: ${{ secrets.SUBSCRIPTIONID }}
 
-      - name: Deploy Static Files to Azure Web App
+      - name: Deploy Static Website to App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: kalal-java-app
           package: .
 
-      - name: Post Login to Azure
-        if: always()
+      - name: Verify Deployment
         run: |
-          echo "Deployment completed successfully!"
-          echo "Website URL: https://kalal-java-app.azurewebsites.net"
+          echo "✓ Deployment completed successfully!"
+          echo "📝 Website deployed from: ${{ github.repository }}"
+          echo "🔗 Access at: https://kalal-java-app.azurewebsites.net"
+          echo "📦 App Service: kalal-java-app"
+          echo "📍 Resource Group: rg-kalal"
+
+      - name: Logout from Azure
+        if: always()
+        run: az logout || true
